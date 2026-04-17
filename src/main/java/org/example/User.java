@@ -25,7 +25,6 @@ public class User {
         boolean isPart2Valid = part2.matches("^[a-zA-Z0-9][a-zA-Z0-9.-]*$");
         boolean isPart3Valid = part3.matches("^[a-zA-Z]{2,}$");
 
-        // תיקון: אם האימייל לא תקין, חייבים לזרוק שגיאה ולא רק "לא לעדכן"
         if (isPart1Valid && isPart2Valid && isPart3Valid) {
             this.gmail = gmail;
         } else {
