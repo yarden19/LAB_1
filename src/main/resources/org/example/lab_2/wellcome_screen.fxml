@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.lab_2.WellcomeControler"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label fx:id="welcomeUser" layoutX="50.0" layoutY="50.0" text="Welcome!" />
+    </children>
+</AnchorPane>
