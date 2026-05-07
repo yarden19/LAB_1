@@ -3,6 +3,7 @@ package org.example.lab_2;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -57,6 +58,64 @@ public class UsersApp {
         {
             if (u.getGmail().equals(gmail) && u.getPassword().equals(password))
                 return true;
+        }
+        return false;
+    }
+
+    public void resetAttempts(String email) {
+        for(User u : this.list)
+        {
+            if (u.getGmail().equals(email))
+            {
+                u.resetAccountStatus();
+                return;
+            }
+        }
+        return;
+    }
+
+    public LocalDateTime getLockTime(String email) {
+        for(User u : this.list)
+        {
+            if (u.getGmail().equals(email))
+            {
+                return u.getLockTime();
+            }
+        }
+        return null;
+    }
+
+    public int incrementFailedAttempts(String email) {
+        for(User u : this.list)
+        {
+            if (u.getGmail().equals(email))
+            {
+                u.incrementFailedAttempts();
+                return u.getFailedAttempts();
+            }
+        }
+        return 0;
+    }
+
+    public void setLockTime(String email, LocalDateTime now) {
+        for(User u : this.list)
+        {
+            if (u.getGmail().equals(email))
+            {
+                u.setLockTime(now);
+                return;
+            }
+        }
+        return;
+    }
+
+    public boolean email_exist(String email) {
+        for(User u : this.list)
+        {
+            if (u.getGmail().equals(email))
+            {
+                return true;
+            }
         }
         return false;
     }

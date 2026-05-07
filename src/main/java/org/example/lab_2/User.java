@@ -1,12 +1,18 @@
 package org.example.lab_2;
 
+import java.time.LocalDateTime;
+
 public class User {
 
     private String gmail;
     private String password;
 
-    //Check if the username and passwords are correct according to the rules
+    private boolean isBlocked = false;
+    private LocalDateTime lockTime = null;
+    private int failedAttempts = 0;
+
     public User(String gmail, String pass) {
+
         if (gmail.length() > 50)
             throw new RuntimeException("Username is too long, try something shorter");
 
@@ -37,7 +43,6 @@ public class User {
         if (pass.length() > 12)
             throw new RuntimeException("Your password is too long, try a shorter one");
 
-
         String passwordRegex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()])[a-zA-Z0-9!@#$%^&*()]+$";
 
         if (pass.matches(passwordRegex)) {
@@ -45,13 +50,31 @@ public class User {
         } else {
             throw new RuntimeException("Please enter a valid password");
         }
+
+        this.failedAttempts = 0;
+        this.isBlocked = false;
+        this.lockTime = null;
     }
 
-    public String getGmail() {
-        return this.gmail;
+
+    public String getGmail() { return this.gmail; }
+    public String getPassword() { return this.password; }
+
+    public boolean getIsBlocked() { return this.isBlocked; }
+    public void setIsBlocked(boolean value) { this.isBlocked = value; }
+
+    public LocalDateTime getLockTime() { return this.lockTime; }
+    public void setLockTime(LocalDateTime t) { this.lockTime = t; }
+
+    public int getFailedAttempts() { return failedAttempts; }
+
+    public void incrementFailedAttempts() {
+        this.failedAttempts++;
     }
 
-    public String getPassword() {
-        return this.password;
+    public void resetAccountStatus() {
+        this.failedAttempts = 0;
+        this.isBlocked = false;
+        this.lockTime = null;
     }
 }

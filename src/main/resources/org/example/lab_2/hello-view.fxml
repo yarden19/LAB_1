@@ -14,5 +14,5 @@
     <Label fx:id="welcomeText" />
     <TextField fx:id="gmailText" prefHeight="38.0" prefWidth="199.0" promptText="enter username(gmail)" />
     <TextField fx:id="passwordText" promptText="enter password" />
-    <Button fx:id="CheckData" onAction="#onLogInClick" text="Hello!" />
+    <Button fx:id="CheckData" onAction="#onLogInClick" text="Log in!" />
 </VBox>
